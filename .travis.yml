@@ -16,3 +16,13 @@ script:
  - dotnet build -c $CONFIGURATION
  - dotnet test -c $CONFIGURATION Gridsum.DataflowEx.Test
  - dotnet pack -c $CONFIGURATION Gridsum.DataflowEx
+
+deploy:
+ - provider: releases
+   file_glob: true
+   api_key:
+     secure: hE+JGDupdk+KhEycHNNVa8Gxjv6BIVs7f5i561bNmyRtDJn4ISC4ID+GT8OkL+17e4Phon/WN2e7k0DQdEI9fAwQd8Cu848HmlIGvn+2mICQtahhooSuBMUMITi06gHfEC3PqwQlmpZyyf7ry0y9/tPzyswxbBc2JT2TufY7S3Mu19q+esktlhjuwX9KWr2ypldO5g4CSb7rCECaznbQieOdktp6eslih6x+mkugLf23WloQCB575hCNyl3FHWwCS+KaAZeqcBbGfVjMnUTxRrbxWWhR3zlmRJDl30a2yNF3n6zarDM0Di1B3X91HcfsOGRQqZb5mw15vDSFQKP8oRfDwWKEe8PkrX1mAoJSX1WsqnJ8mm7gEmhdHCwSkwwvgdFD67NBgywLNdeRs4abndLIFfTadJ99+SnCj6TfHQ1bZKwv0YkjKicZBa29EW1M9lCYdyyLUPsWBfULQQQkngqqI1XVOKijVNh+39sWrJzhCeMVY7N36BRy855OfBD8luADFxM2/dvRzMaZ05d7ugHRcVyl7g52Kd36Cd48B1y0e7MKTG5EViVmsqXmsYhkq0pJKyBkSZEtxTNAqK8liapLWTzYLOWlvsYFVmhOk9h9cse2CvnhInZGvrcV+RVTMMZ1VSr7dQRH3fSfs4bzHx095S7J2eTWwVGaDKtdc0s=
+   file: Gridsum.DataflowEx/$CONFIGURATION/Gridsum.DataflowEx.*.nupkg
+  skip_cleanup: true
+    on:
+     tags: true
